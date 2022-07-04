@@ -7,7 +7,6 @@ import { useState } from "react";
 
 import Description from "./Components/Description";
 
-
 function App() {
   let [amount_obj, setAmount_obj] = useState({});
   const [taxableTotal, setTaxableTotal] = useState(0);
@@ -16,15 +15,14 @@ function App() {
       <CompanyInfo />
 
       <CustomerInfo setTaxableTotal={setTaxableTotal} />
+
+      <Description />
+
       <GSTtotal
         taxableTotal={taxableTotal}
         amount_obj={amount_obj}
         setAmount_obj={setAmount_obj}
       />
-
-      <CustomerInfo />
-      <Description />
-
     </div>
   );
 }
