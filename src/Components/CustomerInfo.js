@@ -1,9 +1,10 @@
 import React from "react";
 
-const CustomerInfo = () => {
+const CustomerInfo = ({ setTaxableTotal }) => {
   let dateInput;
   let invoiceNo = 10;
   let date = new Date().toLocaleDateString();
+
   // dateInput.current.value = "";
   return (
     <div className="flex flex-col  border-black border-4 font-semibold">
@@ -27,8 +28,8 @@ const CustomerInfo = () => {
           <h1 className="flex items-center border-r-4 border-black px-4 text-right w-40">
             Address:
           </h1>
-          <input className="flex items-center w-full border-r-4 border-black text-center overflow-hidden px-2"></input>
-          <div className="flex flex-col">
+          <textarea className="flex flex-col items-center justify-center h-full w-full border-r-4 border-black text-center overflow-hidden px-2"></textarea>
+          <div className="flex flex-col h-full">
             <div className="flex flex-row border-b-4 border-black">
               <h1 className="w-40 text-center border-black border-r-4">
                 Date:
@@ -40,7 +41,7 @@ const CustomerInfo = () => {
               ></input>
             </div>
             <div className="flex flex-row">
-              <h1 className="w-40 text-center border-black border-r-4">
+              <h1 className="w-40 text-center border-black border-r-4 h-full">
                 Delivery Challan
               </h1>
               <h1 className="w-28 text-center font-bold">{"NA"}</h1>
@@ -59,7 +60,10 @@ const CustomerInfo = () => {
           <h1 className="border-r-4 border-black px-4 text-center w-64">
             Place of Supply:
           </h1>
-          <input className="w-full text-center "></input>
+          <input
+            onChange={(e) => setTaxableTotal(parseInt(e.target.value ?? 0))}
+            className="w-full text-center "
+          ></input>
         </div>
       </div>
     </div>
