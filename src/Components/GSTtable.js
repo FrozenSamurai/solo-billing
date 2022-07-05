@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import Description from "./Description";
 import "./GSTtable.css";
 
 const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
@@ -38,7 +39,8 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
         console.log({ valueToSet });
       }
 
-      const amountOfRate = (taxableTotal * valueToSet) / 100;
+      const amountOfRate =
+        ((amount_obj["Description"][row]["total"] ?? 0) * valueToSet) / 100;
       console.log({ amountOfRate });
       const amountInput =
         tbodyRef.current.children[row - 1].children[col + 1].children[0];
@@ -76,7 +78,7 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
     }
 
     CGST_total.current.value = total_CGST;
-    setAmount_obj(newCGST);
+    setAmount_obj({ ...newCGST, CGST_Total: total_CGST });
   };
 
   const calculateSGSTTotal = (newObj = {}) => {
@@ -95,7 +97,7 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
     }
 
     SGST_total.current.value = total_SGST;
-    setAmount_obj(newSGST);
+    setAmount_obj({ ...newSGST, SGST_Total: total_SGST });
   };
 
   const calculateIGSTTotal = (newObj = {}) => {
@@ -114,7 +116,7 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
     }
 
     IGST_total.current.value = total_IGST;
-    setAmount_obj(newIGST);
+    setAmount_obj({ ...newIGST, IGST_Total: total_IGST });
   };
 
   return (
@@ -136,7 +138,7 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
         </tr>
         <tr>
           {[...Array(6)].map((_, colInd) => (
-            <th className="tg-0pky">
+            <th className="tg-0pky" key={colInd}>
               <h1 className="font-semibold">
                 {colInd % 2 === 0 ? "Rate %" : "Amount"}
               </h1>

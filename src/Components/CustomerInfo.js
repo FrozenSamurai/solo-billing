@@ -60,10 +60,7 @@ const CustomerInfo = ({ setTaxableTotal }) => {
           <h1 className="border-r-4 border-black px-4 text-center w-64">
             Place of Supply:
           </h1>
-          <input
-            onChange={(e) => setTaxableTotal(parseInt(e.target.value ?? 0))}
-            className="w-full text-center "
-          ></input>
+          <input onChange={() => {}} className="w-full text-center "></input>
         </div>
       </div>
     </div>
