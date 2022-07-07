@@ -1,5 +1,4 @@
 import { useRef, useEffect } from "react";
-import Description from "./Description";
 import "./GSTtable.css";
 
 const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
@@ -120,7 +119,7 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
   };
 
   return (
-    <table className="tg ">
+    <table className="tg border-r-4 border-black">
       <thead>
         <tr>
           <th className="tg-0pky w-[3.5rem]" rowSpan="2">

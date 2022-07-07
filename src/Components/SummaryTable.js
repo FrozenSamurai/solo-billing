@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./GSTtable.css";
 
 const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
@@ -7,10 +7,17 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
     (amount_obj["SGST_Total"] ?? 0) +
     (amount_obj["IGST_Total"] ?? 0);
   let GrandTotal = taxableTotal + GST_total;
+  useEffect(() => {
+    setAmount_obj({
+      ...amount_obj,
+      GrandTotal: GrandTotal,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [GrandTotal]);
 
   return (
     <>
-      <table className="tg">
+      <table className="tg border-r-4 border-b-4 border-black text-sm">
         <thead>
           <tr>
             <th className="tg-0lax w-4/6">
@@ -22,7 +29,7 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr className="h-5">
             <td className="tg-0lax">
               <h1 className="text-right font-semibold">Taxable Value</h1>
             </td>
@@ -62,24 +69,22 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
               </h1>
             </td>
           </tr>
-          <tr className="h-10 ">
+          <tr className=" ">
             <td className="tg-0lax">
-              <h1 className="text-right font-semibold my-2">
-                Total GST (1+2+3)
-              </h1>
+              <h1 className="text-right font-semibold">Total GST (1+2+3)</h1>
             </td>
             <td className="tg-0lax">
-              <h1 className="text-center font-semibold my-1">
+              <h1 className="text-center font-semibold">
                 {GST_total ? GST_total : 0}
               </h1>
             </td>
           </tr>
-          <tr className="h-10">
+          <tr className="">
             <td className="tg-0lax">
-              <h1 className="text-right font-extrabold my-1">Grand Total</h1>
+              <h1 className="text-right font-extrabold">Grand Total</h1>
             </td>
             <td className="tg-0lax">
-              <h1 className="text-center font-semibold my-1">
+              <h1 className="text-center font-semibold">
                 {GrandTotal ? GrandTotal : 0}
               </h1>
             </td>

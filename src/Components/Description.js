@@ -92,8 +92,11 @@ const Description = ({
   };
 
   return (
-    <>
-      <table className="tg">
+    <div className="flex flex-col">
+      <div className="border-x-4 border-b-2 border-black">
+        <h1 className="font-bold">Description</h1>
+      </div>
+      <table className="tg border-black border-x-4">
         <thead>
           <tr>
             <th className="tg-0lax w-10 ">
@@ -159,7 +162,7 @@ const Description = ({
           </tr>
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
