@@ -54,12 +54,20 @@ const Description = ({
       days = 1;
     }
     // console.log(days, units, rate);
-    let total = units * days * rate;
+    let total = parseFloat(units * days * rate).toFixed(2);
     let total_ref = tbodyRef.current.children[row - 1].children[6].children[0];
     total_ref.value = total ? total : null;
-    set_Description(service_name, SAC, units, days, rate, total, row);
+    set_Description(
+      service_name,
+      SAC,
+      units,
+      days,
+      rate,
+      parseFloat(total).toFixed(2),
+      row
+    );
 
-    // taxable_total.current.value = total;
+    // taxable_total.current.value = total;32
   };
 
   const set_Description = (
@@ -85,10 +93,10 @@ const Description = ({
     setAmount_obj({ ...amount_obj, Description: description_obj });
     let sub_total = 0;
     for (let i of Object.keys(description_obj)) {
-      sub_total += description_obj[i].total;
+      sub_total += parseFloat(description_obj[i].total);
     }
     taxable_total.current.value = sub_total;
-    setTaxableTotal(sub_total);
+    setTaxableTotal(parseFloat(sub_total));
   };
 
   return (
@@ -106,10 +114,10 @@ const Description = ({
               <h1 className="text-center font-semibold">Description </h1>
             </th>
             <th className="tg-0lax w-24">
-              <h1 className="text-center font-semibold">SAC </h1>
+              <h1 className="text-center font-semibold">HSN/SAC </h1>
             </th>
             <th className="tg-0lax">
-              <h1 className="text-center font-semibold">NO OF DAYS</h1>
+              <h1 className="text-center font-semibold">QTY</h1>
             </th>
             <th className="tg-0lax">
               <h1 className="text-center font-semibold">Unit</h1>

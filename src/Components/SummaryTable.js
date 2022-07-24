@@ -6,7 +6,8 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
     (amount_obj["CGST_Total"] ?? 0) +
     (amount_obj["SGST_Total"] ?? 0) +
     (amount_obj["IGST_Total"] ?? 0);
-  let GrandTotal = taxableTotal + GST_total;
+  console.log(typeof taxableTotal, typeof amount_obj["CGST_Total"]);
+  let GrandTotal = parseFloat(taxableTotal) + parseFloat(GST_total);
   useEffect(() => {
     setAmount_obj({
       ...amount_obj,
@@ -45,7 +46,9 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
             </td>
             <td className="tg-0lax">
               <h1 className="text-center font-semibold ">
-                {amount_obj["CGST_Total"] ?? 0}
+                {amount_obj["CGST_Total"]
+                  ? parseFloat(amount_obj["CGST_Total"]).toFixed(2)
+                  : 0}
               </h1>
             </td>
           </tr>
@@ -55,7 +58,9 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
             </td>
             <td className="tg-0lax">
               <h1 className="text-center font-semibold ">
-                {amount_obj["SGST_Total"] ?? 0}
+                {amount_obj["SGST_Total"]
+                  ? parseFloat(amount_obj["SGST_Total"]).toFixed(2)
+                  : 0}
               </h1>
             </td>
           </tr>
@@ -75,7 +80,7 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
             </td>
             <td className="tg-0lax">
               <h1 className="text-center font-semibold">
-                {GST_total ? GST_total : 0}
+                {GST_total ? parseFloat(GST_total).toFixed(2) : 0}
               </h1>
             </td>
           </tr>
@@ -85,7 +90,7 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
             </td>
             <td className="tg-0lax">
               <h1 className="text-center font-semibold">
-                {GrandTotal ? GrandTotal : 0}
+                {GrandTotal ? parseFloat(GrandTotal).toFixed(2) : 0}
               </h1>
             </td>
           </tr>

@@ -11,6 +11,7 @@ const GSTtotal = ({ amount_obj, setAmount_obj, taxableTotal }) => {
       return words;
     }
   };
+
   return (
     <div className="flex flex-row font-semibold">
       <div className="flex flex-col w-1/3 h-[17 rem]">
@@ -25,6 +26,9 @@ const GSTtotal = ({ amount_obj, setAmount_obj, taxableTotal }) => {
         <div className="flex flex-grow flex-col w-full h-full">
           <h1 className="text-left  border-2 border-l-4 border-black text-sm">
             Bank Details :- ICICI BANK
+          </h1>
+          <h1 className="text-left border-r-2 border-l-4 border-black text-sm">
+            A/C name :- MANDAR PATIL
           </h1>
           <h1 className="text-left border-r-2 border-l-4 border-black text-sm">
             A/C num :- 148901508428

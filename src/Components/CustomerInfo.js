@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
-const CustomerInfo = (
+const CustomerInfo = ({
+  amount_obj,
   allData,
   setAllData,
-  amount_obj,
   consmerInfo,
-  setConsmerInfo
-) => {
+  setConsmerInfo,
+}) => {
   let nameRef = useRef(null),
     addressRef = useRef(null),
     dateRef = useRef(null),
@@ -21,13 +21,16 @@ const CustomerInfo = (
     parseInt(today.getMonth() + 1) +
     "/" +
     today.getFullYear();
+
   const handleChangeData = () => {
-    let name = nameRef.current.value ?? null,
+    // try {
+    let name = nameRef.current.value ? nameRef.current.value : "none",
       address = addressRef.current.value ?? null,
       date = dateRef.current.value ?? null,
       GSTIN = GSTINRef.current.value ?? null,
       place = placeRef.current.value ?? null,
-      invoiceNo = invoiceNoRef.current.value ?? null;
+      invoiceNo = invoiceNoRef.current.value ? invoiceNoRef.current.value : 10;
+
     let alldata_obj = {
       ...allData,
       [invoiceNo]: {
@@ -42,7 +45,8 @@ const CustomerInfo = (
         ...amount_obj,
       },
     };
-    setAllData(...alldata_obj);
+    // console.log(alldata_obj);
+    setAllData(alldata_obj);
 
     let consumerInfo_obj = {
       ...consmerInfo,
@@ -51,13 +55,17 @@ const CustomerInfo = (
         GSTIN: GSTIN,
         place: place,
         invoices: {
-          [invoiceNo]: amount_obj["GrandTotal"],
+          [invoiceNo]: 0,
         },
       },
     };
-    setConsmerInfo(...consumerInfo_obj);
+    setConsmerInfo(consumerInfo_obj);
+    console.log(consmerInfo);
     // console.log(name, address, date, GSTIN, place, invoiceNo);
     // return { name, address, date, GSTIN, place, invoiceNo };
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
   // dateInput.current.value = "";
   return (
@@ -123,7 +131,10 @@ const CustomerInfo = (
               <h1 className="w-40 text-center border-black border-r-4 h-full">
                 Delivery Challan
               </h1>
-              <h1 className="w-28 text-center font-bold">{"NA"}</h1>
+              <input
+                className="w-28 text-center font-bold"
+                placeholder="NA"
+              ></input>
             </div>
           </div>
         </div>

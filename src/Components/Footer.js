@@ -1,5 +1,6 @@
 import React from "react";
 import SummaryTable from "./SummaryTable";
+import sign from "./sign.png";
 
 const Footer = ({ amount_obj, setAmount_obj, taxableTotal }) => {
   return (
@@ -18,8 +19,8 @@ const Footer = ({ amount_obj, setAmount_obj, taxableTotal }) => {
             <h1>Thank you for your Business</h1>
           </div>
           <div className="flex flex-col w-1/3 h-full">
-            <div className="flex items-start h-[60%] border-2 border-black">
-              <img src="/solo_facilities.png" alt="logo"></img>
+            <div className="flex items-center justify-center h-[60%] border-2 border-black">
+              <img src={sign} alt="Signature" className="h-10"></img>
             </div>
             <div className="flex items-center text-sm justify-center h-[40%] border-2 border-b-4 border-black">
               <h1>Authorized Signatory</h1>

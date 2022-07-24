@@ -43,7 +43,7 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
       console.log({ amountOfRate });
       const amountInput =
         tbodyRef.current.children[row - 1].children[col + 1].children[0];
-      amountInput.value = amountOfRate;
+      amountInput.value = parseFloat(amountOfRate).toFixed(2);
       let obj = {
         [row]: {
           rate: parseInt(valueToSet),
@@ -76,7 +76,7 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
       total_CGST += newCGST["CGST"][i].amount;
     }
 
-    CGST_total.current.value = total_CGST;
+    CGST_total.current.value = parseFloat(total_CGST).toFixed(2);
     setAmount_obj({ ...newCGST, CGST_Total: total_CGST });
   };
 
@@ -95,7 +95,7 @@ const GSTtable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
       total_SGST += newSGST["SGST"][i].amount;
     }
 
-    SGST_total.current.value = total_SGST;
+    SGST_total.current.value = parseFloat(total_SGST).toFixed(2);
     setAmount_obj({ ...newSGST, SGST_Total: total_SGST });
   };
 
