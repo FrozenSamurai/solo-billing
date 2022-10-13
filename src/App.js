@@ -5,7 +5,7 @@ import Signin from "./Components/Signin";
 import { Route, Routes } from "react-router-dom";
 
 import GSTtotal from "./Components/GSTtotal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Description from "./Components/Description";
 import Footer from "./Components/Footer";
@@ -36,38 +36,36 @@ const MainApp = () => {
   let [allData, setAllData] = useState({ ...amount_obj });
   let [consmerInfo, setConsmerInfo] = useState({});
   return (
-    <>
-      <div className="xl:mx-72 md:mx-32 " id="divToPrint">
-        <CompanyInfo amount_obj={amount_obj} />
+    <div className="xl:mx-72 md:mx-32 " id="divToPrint">
+      <CompanyInfo amount_obj={amount_obj} />
 
-        <CustomerInfo
-          setTaxableTotal={setTaxableTotal}
-          allData={allData}
-          setAllData={setAllData}
-          amount_obj={amount_obj}
-          consmerInfo={consmerInfo}
-          setConsmerInfo={setConsmerInfo}
-        />
+      <CustomerInfo
+        setTaxableTotal={setTaxableTotal}
+        allData={allData}
+        setAllData={setAllData}
+        amount_obj={amount_obj}
+        consmerInfo={consmerInfo}
+        setConsmerInfo={setConsmerInfo}
+      />
 
-        <Description
-          taxableTotal={taxableTotal}
-          setTaxableTotal={setTaxableTotal}
-          amount_obj={amount_obj}
-          setAmount_obj={setAmount_obj}
-        />
+      <Description
+        taxableTotal={taxableTotal}
+        setTaxableTotal={setTaxableTotal}
+        amount_obj={amount_obj}
+        setAmount_obj={setAmount_obj}
+      />
 
-        <GSTtotal
-          taxableTotal={taxableTotal}
-          amount_obj={amount_obj}
-          setAmount_obj={setAmount_obj}
-        />
-        <Footer
-          taxableTotal={taxableTotal}
-          amount_obj={amount_obj}
-          setAmount_obj={setAmount_obj}
-        />
-      </div>
-    </>
+      <GSTtotal
+        taxableTotal={taxableTotal}
+        amount_obj={amount_obj}
+        setAmount_obj={setAmount_obj}
+      />
+      <Footer
+        taxableTotal={taxableTotal}
+        amount_obj={amount_obj}
+        setAmount_obj={setAmount_obj}
+      />
+    </div>
   );
 };
 export default App;
