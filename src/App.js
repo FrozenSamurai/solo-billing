@@ -10,6 +10,10 @@ import { useState } from "react";
 import Description from "./Components/Description";
 import Footer from "./Components/Footer";
 import PrivateRoutes from "./Components/PrivateRoutes";
+import CompanyInfo2 from "./Components/nonGst/CompanyInfo";
+import Description2 from "./Components/nonGst/Description";
+import Total from "./Components/nonGst/Total";
+import Footer2 from "./Components/nonGst/Footer";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -22,9 +26,14 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Signin setLogin={setLogin} />} />
+        <Route
+          exact
+          path="/"
+          element={<Signin setLogin={setLogin} login={login} />}
+        />
         <Route element={<PrivateRoutes login={login} />}>
           <Route path="/main" element={<MainApp />} />
+          <Route path="/non-gst" element={<NonGSTApp />} />
         </Route>
       </Routes>
     </>
@@ -68,4 +77,41 @@ const MainApp = () => {
     </div>
   );
 };
+
+const NonGSTApp = () => {
+  let [amount_obj, setAmount_obj] = useState({});
+  const [taxableTotal, setTaxableTotal] = useState(0);
+  let [allData, setAllData] = useState({ ...amount_obj });
+  let [consmerInfo, setConsmerInfo] = useState({});
+  return (
+    <div className="xl:mx-72 md:mx-32 " id="divToPrint">
+      <CompanyInfo2 amount_obj={amount_obj} />
+      <CustomerInfo
+        setTaxableTotal={setTaxableTotal}
+        allData={allData}
+        setAllData={setAllData}
+        amount_obj={amount_obj}
+        consmerInfo={consmerInfo}
+        setConsmerInfo={setConsmerInfo}
+      />
+      <Description2
+        taxableTotal={taxableTotal}
+        setTaxableTotal={setTaxableTotal}
+        amount_obj={amount_obj}
+        setAmount_obj={setAmount_obj}
+      />
+      <Total
+        taxableTotal={taxableTotal}
+        amount_obj={amount_obj}
+        setAmount_obj={setAmount_obj}
+      />
+      <Footer2
+        taxableTotal={taxableTotal}
+        amount_obj={amount_obj}
+        setAmount_obj={setAmount_obj}
+      />
+    </div>
+  );
+};
+
 export default App;
