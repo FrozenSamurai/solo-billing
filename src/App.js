@@ -14,6 +14,7 @@ import CompanyInfo2 from "./Components/nonGst/CompanyInfo";
 import Description2 from "./Components/nonGst/Description";
 import Total from "./Components/nonGst/Total";
 import Footer2 from "./Components/nonGst/Footer";
+import CustomerInfo2 from "./Components/nonGst/CustomerInfo";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -86,7 +87,7 @@ const NonGSTApp = () => {
   return (
     <div className="xl:mx-72 md:mx-32 " id="divToPrint">
       <CompanyInfo2 amount_obj={amount_obj} />
-      <CustomerInfo
+      <CustomerInfo2
         setTaxableTotal={setTaxableTotal}
         allData={allData}
         setAllData={setAllData}
