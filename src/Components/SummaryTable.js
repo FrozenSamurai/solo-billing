@@ -18,7 +18,7 @@ const SummaryTable = ({ amount_obj, setAmount_obj, taxableTotal }) => {
 
   return (
     <>
-      <table className="tg border-r-4 border-b-4 border-black text-sm">
+      <table className="tg flex-1 border-r-4 border-b-4 border-black text-sm">
         <thead>
           <tr>
             <th className="tg-0lax w-4/6">

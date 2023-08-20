@@ -17,9 +17,9 @@ const CompanyInfo2 = () => {
           </div>
         </div>
         <div className="flex w-full flex-row h-fit">
-          <p className=" w-2/3 text-center border-t-4 border-black text-sm font-semibold">
-            SHOP NO - 1, AAI CONSTRUCTION, MATOSHREE SADAN, OPP GAODEVI MANDIR,
-            NANDIVALI TEKDI,DOMBIVALI EAST,THANE - 421201
+          <p className=" w-2/3 text-center border-t-4 border-black text-sm font-semibold uppercase">
+            Shop No. 20,Krishna Niwas,Chiplunkar Road,Near Ganesh Coldrinks,
+            Dombivli - EAST, THANE - 421201
           </p>
           <div className="w-1/3 flex flex-col items-center justify-center  border-black border-l-4 border-t-4">
             {/* <img src="/solo.png" alt="solo-logo"></img> */}
