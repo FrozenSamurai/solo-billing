@@ -97,7 +97,6 @@ const Description2 = ({
     }
     taxable_total.current.value = sub_total;
     setTaxableTotal(parseFloat(sub_total));
-    setAmount_obj({ ...amount_obj, GrandTotal: sub_total });
   };
 
   return (
@@ -164,6 +163,7 @@ const Description2 = ({
               <input
                 disabled
                 className="w-full text-center font-semibold"
+                // onChange={(e) => setTaxableTotal(parseInt(e.target.value ?? 0))}
                 ref={taxable_total}
               ></input>
             </td>

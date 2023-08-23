@@ -19,7 +19,7 @@ const Total = ({ amount_obj, setAmount_obj, taxableTotal }) => {
             Amount in Words:
           </h1>
           <h1 className="flex-grow text-center border-r-[2px] border-b-2 border-l-4 border-black text-sm font-bold px-3">
-            {convertToWords(amount_obj["GrandTotal"]) ?? null}
+            {convertToWords(taxableTotal) ?? null}
           </h1>
         </div>
         <div className="flex flex-grow flex-col w-full h-full">
